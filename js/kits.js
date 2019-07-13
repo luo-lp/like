@@ -5,9 +5,9 @@
  */
 function loadData(key) {
     var str = localStorage.getItem(key);
-    var arr = JSON.parse(str);
-    if (!arr) {
-        arr = [];
+    var arrr = JSON.parse(str);
+    if (!arrr) {
+        arrr = [];
     }
-    return arr;
+    return arrr;
 }
