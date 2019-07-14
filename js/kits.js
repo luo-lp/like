@@ -11,3 +11,15 @@ function loadData(key){
   }
   return arr;
 }
+/**
+ * @description 用于将数组存储到localStorage里面的方法
+ * @param {string} key 存储使用的键
+ * @param {Array} arr 要存储的数组数据
+ * @return {undefined}
+ */
+function saveData(key,arr){
+  var json = JSON.stringify(arr);
+  
+  localStorage.setItem(key, json);
+
+}
