@@ -9,8 +9,6 @@
     function jQueray(selector) {
         return new Init(selector)
     }
-    console.dir(jQuery)
-    console.dir(jQueray)
     function Init(selector) {
         let dom = document.querySelectorAll(selector);
         for (let i = 0; i < dom.length; i++) {
@@ -79,18 +77,24 @@
     Init.prototype.hide = function () {
         this.each(function (i, e) {
             e.style.display = 'none';
-            
+
         });
         return this;
     }
     Init.prototype.html = function (element) {
+        let arr = []
         this.each(function (i, e) {
             if (element === undefined) {
-                return e.innerHtml;
+                console.log(e.innerHTML)
+                arr[i] = e.innerHTML
             } else {
-                e.innerHtml = element;
+                e.innerHTML = element;
             }
-            return this;
         });
+        if(element === undefined){
+            return arr;
+        }else{
+            return this;
+        }
     }
 })();
