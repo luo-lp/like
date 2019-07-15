@@ -17,12 +17,22 @@
 
 <body>
     <div>123</div>
+    <input type="button" name="" id="" value="456">
+    <input type="button" name="" id="" value="456">
+    <input type="button" name="" id="" value="456">
 </body>
 <script src="./myjq.js"></script>
 <script>
     let dv = document.querySelector('div')
-    let aaa= $('div').text()
-    console.log(aaa[0])
+    // let btn = document.querySelector('input')
+    let aaa = $('div').text()
+    // console.log(aaa[0])
+    let btn = document.querySelector('input')
+    // console.log($('input').val())
+    let bbb=$('input').val()
+    $('input').val('789')
+    console.log(aaa)
+    // console.log(btn.value)
 </script>
 
 </html>

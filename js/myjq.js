@@ -144,7 +144,11 @@
             }
         });
         if (element === undefined) {
-            return arr;
+            if (arr.length <= 1) {
+                return arr[0]
+            } else {
+                return arr
+            }
         } else {
             return this;
         }
@@ -157,17 +161,43 @@
         let arr = []
         this.each(function (i, e) {
             if (element === undefined) {
-                console.log(e.innerText)
                 arr[i] = e.innerText
             } else {
                 e.innerText = element;
             }
         });
         if (element === undefined) {
-            return arr;
+            if (arr.length <= 1) {
+                return arr[0]
+            } else {
+                return arr
+            }
         } else {
             return this;
         }
     }
+    /**
+     * 获取及设置value属性
+     * @method val
+     */
+    Init.prototype.val = function (val) {
+        let arr = []
+        this.each(function (i, e) {
+            if (val === undefined) {
+                arr[i] = e.value
+            } else {
+                e.value = val
+            }
 
+        })
+        if (val === undefined) {
+            if (arr.length <= 1) {
+                return arr[0]
+            } else {
+                return arr
+            }
+        } else {
+            return this;
+        }
+    }
 })();
