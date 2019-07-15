@@ -10,8 +10,6 @@
         div {
             width: 500px;
             height: 500px;
-
-            
             background-color: skyblue;
         }
     </style>
@@ -23,8 +21,8 @@
 <script src="./myjq.js"></script>
 <script>
     let dv = document.querySelector('div')
-    let aaa= $('div').html(456)
-    console.log(aaa)
+    let aaa= $('div').text()
+    console.log(aaa[0])
 </script>
 
 </html>
