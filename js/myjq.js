@@ -236,23 +236,4 @@
         });
         return this
     }
-    Init.prototype.attr = function (property, val) {
-        let arr = [];
-        this.each(function (i, e) {
-            if (val === undefined) {
-                arr[i] = e.getAttribute(property);
-            } else {
-                e.setAttribute(property, val);
-            }
-        })
-        if (val === undefined) {
-            if (arr.length <= 1) {
-                return arr[0];
-            } else {
-                return arr;
-            }
-        } else {
-            return this;
-        }
-    }
 })();
