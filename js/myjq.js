@@ -9,7 +9,7 @@
  *@for 所属类名
  *@param{参数类型}参数名 参数说明
  *@return {返回值类型} 返回值说明
-*/
+ */
 // 在这里形成一个局部作用域，防止别人的代码影响我们自己的代码
 ;
 (function () {
@@ -18,9 +18,11 @@
     function jQuery(selector) {
         return new Init(selector)
     }
+
     function jQueray(selector) {
         return new Init(selector)
     }
+
     function Init(selector) {
         let dom = document.querySelectorAll(selector);
         for (let i = 0; i < dom.length; i++) {
@@ -138,16 +140,16 @@
         this.each(function (i, e) {
             if (element === undefined) {
                 console.log(e.innerHTML)
-                arr[i] = e.innerHTML
+                arr[i] = e.innerHTML;
             } else {
                 e.innerHTML = element;
             }
         });
         if (element === undefined) {
             if (arr.length <= 1) {
-                return arr[0]
+                return arr[0];
             } else {
-                return arr
+                return arr;
             }
         } else {
             return this;
@@ -161,16 +163,16 @@
         let arr = []
         this.each(function (i, e) {
             if (element === undefined) {
-                arr[i] = e.innerText
+                arr[i] = e.innerText;
             } else {
                 e.innerText = element;
             }
         });
         if (element === undefined) {
             if (arr.length <= 1) {
-                return arr[0]
+                return arr[0];
             } else {
-                return arr
+                return arr;
             }
         } else {
             return this;
@@ -181,23 +183,47 @@
      * @method val
      */
     Init.prototype.val = function (val) {
-        let arr = []
+        let arr = [];
         this.each(function (i, e) {
             if (val === undefined) {
-                arr[i] = e.value
+                arr[i] = e.value;
             } else {
-                e.value = val
+                e.value = val;
             }
-
         })
         if (val === undefined) {
             if (arr.length <= 1) {
-                return arr[0]
+                return arr[0];
             } else {
-                return arr
+                return arr;
             }
         } else {
             return this;
         }
     }
+    /**
+     * 添加自定义属性和获取属性值
+     * @method attr
+     * 
+     */
+    Init.prototype.attr = function (property, val) {
+        let arr = [];
+        this.each(function (i, e) {
+            if (val === undefined) {
+                arr[i] = e.getAttribute(property);
+            } else {
+                e.setAttribute(property, val);
+            }
+        })
+        if (val === undefined) {
+            if (arr.length <= 1) {
+                return arr[0];
+            } else {
+                return arr;
+            }
+        } else {
+            return this;
+        }
+    }
+    
 })();

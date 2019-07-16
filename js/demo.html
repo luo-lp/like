@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div>123</div>
+    <div class="dv" id="dv">123</div>
     <input type="button" name="" id="" value="456">
     <input type="button" name="" id="" value="456">
     <input type="button" name="" id="" value="456">
@@ -33,6 +33,10 @@
     $('input').val('789')
     console.log(aaa)
     // console.log(btn.value)
+    $('div').attr('aa','bb')
+    console.log($('div').attr('class'))
+  
+    $('div').removeAttr('id')
 </script>
 
 </html>
