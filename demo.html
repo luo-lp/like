@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dv" id="dv">123</div>
+    <input type="button" name="" id="" value="456">
+    <input type="button" name="" id="" value="456">
+    <input type="button" name="" id="" value="456">
+</body>
+<script src="./myjq.js"></script>
+<script>
+    let dv = document.querySelector('div')
+    // let btn = document.querySelector('input')
+    let aaa = $('div').text()
+    // console.log(aaa[0])
+    let btn = document.querySelector('input')
+    // console.log($('input').val())
+    let bbb=$('input').val()
+    $('input').val('789')
+    console.log(aaa)
+    // console.log(btn.value)
+    $('div').attr('aa','bb')
+    console.log($('div').attr('class'))
+    $('div').removeAttr('id')
+</script>
+
+</html>
