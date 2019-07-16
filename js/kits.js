@@ -1,12 +1,12 @@
 /**
-  * @description 读取存储在localStorage里面的数组的
-  * @param {string} key 存储数据使用的键
-  * @return {Array} 返回一个数组，如果不存在，返回空数组
-  */
-function loadData(key){
+ * @description 读取存储在localStorage里面的数组的
+ * @param {string} key 存储数据使用的键
+ * @return {Array} 返回一个数组，如果不存在，返回空数组
+ */
+function loadData(key) {
   var str = localStorage.getItem(key);
   var arr = JSON.parse(str);
-  if(!arr){
+  if (!arr) {
     arr = [];
   }
   return arr;
@@ -17,9 +17,20 @@ function loadData(key){
  * @param {Array} arr 要存储的数组数据
  * @return {undefined}
  */
-function saveData(key,arr){
+function saveData(key, arr) {
   var json = JSON.stringify(arr);
-  
-  localStorage.setItem(key, json);
 
+  localStorage.setItem(key, json);
+}
+/**
+ * @description 用于获取随机数
+ * @param {string} n 开始 m结束
+ * @return {number}
+ */
+function getRandom(n, m) {
+  if (m !== undefined) {
+    return Math.floor(Math.random() * (m - n + 1) + n);
+  } else {
+    return Math.floor(Math.random() * n);
+  }
 }
