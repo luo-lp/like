@@ -225,5 +225,15 @@
             return this;
         }
     }
-    
+    /**
+     * 移除属性
+     * @method removeAttr
+     * 
+     */
+    Init.prototype.removeAttr = function (property) {
+        this.each(function(i,e){
+            e.removeAttribute(property)
+        });
+        return this
+    }
 })();
