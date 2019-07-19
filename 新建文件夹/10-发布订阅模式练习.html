@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" value="注册" id="btn"> 
+</body>
+<script>
+/*
+  发布订阅模式
+    是一种设计模式 - 什么是设计模式 - 也是一种面向对象的封装技巧
+
+    把对应的处理方式(函数)，存储到一个数组里面，使用键值对把数组存储到对象里面，需要对应的逻辑，直接根据键值对获取所有的处理方式，调用
+
+    发布订阅模式的好处：
+      异步编程中的解耦
+        解耦 - 程序讲究 高内聚，低耦合
+          低耦合 - 程序和和程序之间的依赖性比较低
+          解耦指的是： 代码能够细分的更加合理，代码和代码之间，相互依赖的关系，变的很低
+      异步编程 - setTimouet ,setInterval , ajax 
+*/
+
+;(function(){
+
+  let clientEvents = {}; // 用来存储多个数组的对象
+  
+
+  // 提供多个方法，操作数里面的函数
+  function add(key,fn){
+    // 判断如果数组已经存在，就不创建了
+    if(!clientEvents[key]){
+      clientEvents[key]= [];
+    }    
+    clientEvents[key].push(fn);
+  }
+
+  function trigger(key){
+    //根据key找到 clientEvent里面的数组，把数组里面的所有的函数，都调用
+    let events = clientEvents[key];
+    if(events){
+      for(let i = 0; i <events.length;i++){
+        events[i]();
+      }
+    }
+  }
+
+
+  window.Events = {
+    add : add,
+    trigger : trigger
+  }
+})();
+
+// console.log(Events);
+
+// 如果注册成功，可能需要做的事情：
+// 1.提示用户
+// 2.自动的跳转到主页
+// 3.把一些用户的信息写入localStorage - 用来实现多少天免登录
+
+Events.add('regSucess',function(){
+  console.log('提示用户注册成功');
+});
+Events.add('regSucess',function(){
+  console.log('假装已经跳转到了主页');
+})
+Events.add('regSucess',function(){
+  console.log('把数据存储到了本地数据了');
+});
+Events.add('regSucess',function(){
+  console.log('只要想要做更多的事情，就在这里添加新的方法');
+});
+
+
+// Events.trigger('regSucess');
+
+// 给按钮注册点击事件
+let btn = document.querySelector('#btn');
+btn.onclick = function(){
+  // 把数据发送回服务器
+  console.log(123);
+  // 网速比较慢，使用一个定时器模拟服务器延迟返回数据
+  setTimeout(() => {
+    let res = {
+      status : 200,
+      msg : '注册成功'
+    }
+
+    if(res.status === 200){
+      Events.trigger('regSucess');
+
+      // console.log('提示用户注册成功了');
+      // console.log('跳转到主页');
+      // console.log('把数据写入到localstorage里面');
+      // console.log('还要做更多的事情');
+
+    }
+  }, 2000);
+
+  console.log(456);
+}
+
+</script>
+</html>
