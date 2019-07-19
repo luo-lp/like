@@ -231,9 +231,17 @@
      * 
      */
     Init.prototype.removeAttr = function (property) {
-        this.each(function(i,e){
+        this.each(function (i, e) {
             e.removeAttribute(property)
         });
         return this
+    }
+    /**
+     * 选中对象中的第几个
+     * @method eq
+     * 
+     */
+    Init.prototype.eq = function (index) {
+        return this[index]
     }
 })();
