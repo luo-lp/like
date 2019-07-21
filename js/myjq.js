@@ -244,4 +244,27 @@
     Init.prototype.eq = function (index) {
         return this[index]
     }
+    /**
+     * 选中对象中的第几个
+     * @method find
+     * 
+     */
+    Init.prototype.find = function (str) {
+        var i = 0;
+        var aResult = [];//存放临时数据
+        for (i = 0; i < this.elements.length; i++) {
+            switch (str.charAt(0)) {
+                case '.'://class类
+                    var aEle = getByClass(this.elements[i], str.substring(1));
+                    aResult.concat(aEle);//桥接到aResult内。
+                    break;
+
+                default://其它标签名(TagName)
+                    var aEle = this.elements[i].getElementsByTagName(str);
+
+                    aResult.concat(aEle);
+            }
+        }
+        return this;//保持可链。
+    }
 })();
