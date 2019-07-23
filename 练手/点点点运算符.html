@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun(...values) {
+            console.log(arguments);
+            arguments.forEach(function (item, index) {
+                console.log(item, index);
+            });
+            console.log(values);
+            values.forEach(function (item, index) {
+                console.log(item, index);
+            })
+        }
+        fun(1,2,42153,25234,5);
+    </script>
+</body>
+
+</html>
