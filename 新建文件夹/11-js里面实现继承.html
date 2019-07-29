@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+    js里面如何实现继承
+      1.借用构造函数继承 - 实现属性的继承
+      2.原型继承
+
+      两者组合起来使用 —— 组合继承
+  */
+
+  // 大分类
+  function Person(name,age,gender){
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+  Person.prototype.sayHi = function(){
+    console.log('大家好，我叫'+ this.name +',今年'+this.age+'岁，我是一个'+ this.gender+'孩子');
+  }
+
+  // let p1 = new Person('小新',5,'男');
+  // p1.sayHi();
+
+  // 小分类
+  function Student(name,age,gender,number){
+    // this.name = name;
+    // this.age = age;
+    // this.gender =gender;
+    /*
+      借用构造函数实现继承的固定用法：
+        大分类构造函数.call(this,大分类所需的参数一个一个的传递);
+    */
+    Person.call(this,name,age,gender);
+    this.number = number;
+  }
+
+  let s1 = new Student('正南',4,'男','01');
+  console.log(s1);
+  s1.sayHi();
+</script>
+</html>
