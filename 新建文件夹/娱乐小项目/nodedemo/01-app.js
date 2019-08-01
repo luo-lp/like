@@ -49,3 +49,24 @@ app.post('/addHero', (req, res) => {
     })
   })
 })
+// 添加英雄页面
+app.get('/edit', (req, res) => {
+  res.render('edit')
+})
+app.get('/getHeroById', (req, res) => {
+  fs.readFile('./data/heros.json', 'utf-8', (err, data) => {
+    let id = req.query.id;
+    if (err) console.log(err);
+    let arr = JSON.parse(data)
+    arr.forEach(e => {
+      if (e.id == id) {
+        req.query = e
+      }
+    })
+    res.send({
+      code: 200,
+      msg: '成功',
+      data: req.query
+    })
+  })
+})
