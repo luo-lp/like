@@ -27,3 +27,25 @@ app.get('/add.html', (req, res) => {
     res.end(data)
   })
 })
+// 实现添加功能
+app.post('/addHero', (req, res) => {
+  fs.readFile('./data/heros.json', 'utf-8', (err, data) => {
+    if (err) console.log(err);
+    let arr = JSON.parse(data)
+    req.body.id = 0;
+    arr.forEach(e => {
+      if (e.id > req.body.id) {
+        req.body.id = e.id;
+      }
+    });
+    req.body.id += 1;
+    arr.push(req.body);
+    fs.writeFile('./data/heros.json', JSON.stringify(arr), 'utf-8', (err) => {
+      if (err) console.log(err);
+      res.send({
+        code: 200,
+        msg: '成功'
+      })
+    })
+  })
+})
