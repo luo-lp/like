@@ -20,3 +20,10 @@ app.get('/index', (req, res) => {
     })
   })
 })
+// 添加英雄页面
+app.get('/add.html', (req, res) => {
+  fs.readFile('./views/add.html', (err, data) => {
+    if (err) console.log(err);
+    res.end(data)
+  })
+})
