@@ -8,6 +8,9 @@ const controller = require('./controller')
 router.get('/index',(req,res)=>{
     controller.getIndex(req,res)
 })
-
+// 添加英雄页面
+router.get('/add.html',(req,res)=>{
+    controller.getAdd(req,res)
+})
 // 让router暴露出来
 module.exports= router;
