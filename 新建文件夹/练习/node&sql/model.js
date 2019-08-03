@@ -16,7 +16,7 @@ let conn = mysql.createConnection({
 // 连接数据库
 conn.connect();
 // 创建model层
-const model = { getHeros, getSQL, addHero, getHeroById };
+const model = { getHeros, getSQL, addHero, getHeroById,getDataSetHero };
 function getSQL(sql, callbcak) {
     // 执行sql语句
     conn.query(sql, (err, result, filed) => {
@@ -47,6 +47,13 @@ function getHeroById(id,callback) {
     let sql = `SELECT * FROM hero WHERE id=${id}`;
     getSQL(sql, (result) => {
         callback(result);
+    })
+}
+// 根据id修改英雄
+function getDataSetHero(data,callback){
+    let sql = `UPDATE hero SET \`name\`='${data.name}',\`gender\`='${data.gender}',\`img\`='${data.img}' WHERE id = ${data.id}`;;
+    getSQL(sql,(result)=>{
+        callback(result)
     })
 }
 module.exports = model;

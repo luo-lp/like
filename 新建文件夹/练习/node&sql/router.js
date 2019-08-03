@@ -8,9 +8,13 @@ const controller = require('./controller')
 router.get('/index',(req,res)=>{
     controller.getIndex(req,res)
 })
-// 处理首页的修改数据
+// 修改英雄页面
 router.get('/edit',(req,res)=>{
     controller.edit(req,res)
+})
+// 处理修改英雄页面数据
+router.post('/revampHero',(req,res)=>{
+    controller.revampHero(req,res)
 })
 // 添加英雄页面
 router.get('/add.html',(req,res)=>{

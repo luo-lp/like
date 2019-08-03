@@ -37,13 +37,28 @@ function addHero(req, res) {
 // 修改英雄页面
 function edit(req, res) {
     let id = req.query.id;
+    // 根据id获取数据
     model.getHeroById(id,(arr)=>{
         arr = arr[0]
-        console.log(arr);
-        
+        // 渲染页面
         res.render('edit',{arr})
     })
 }
-function revampHero(){}
+// 修改英雄
+function revampHero(req,res){
+    let id = req.body.id;
+    // console.log(req.body);
+    // console.log(id);
+    model.getDataSetHero(req.body,(result)=>{
+        let response = {
+            code: 501,
+            msg: '失败'
+        }
+        if(result.affectedRows===1){
+            response.code=200,
+            msg='成功'
+        }
+    })
+}
 // 把controller暴露出去
 module.exports = controller;
