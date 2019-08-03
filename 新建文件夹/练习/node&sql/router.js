@@ -4,9 +4,13 @@ const express = require('express');
 const router = express.Router();
 // 引入controller模块
 const controller = require('./controller')
-// 主页
+// 首页
 router.get('/index',(req,res)=>{
     controller.getIndex(req,res)
+})
+// 处理首页的修改数据
+router.get('/edit',(req,res)=>{
+    controller.edit(req,res)
 })
 // 添加英雄页面
 router.get('/add.html',(req,res)=>{

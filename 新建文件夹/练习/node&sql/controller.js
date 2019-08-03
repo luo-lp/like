@@ -1,5 +1,5 @@
 // 创建controller层
-const controller = { getIndex, getAdd, addHero }
+const controller = { getIndex, getAdd, addHero, edit, revampHero }
 // 引入model层
 const model = require('./model')
 // 首页
@@ -20,11 +20,13 @@ function getAdd(req, res) {
 function addHero(req, res) {
     // 获取请求的数据
     let data = req.body;
-    model.addHero(data,(result) => {
+    model.addHero(data, (result) => {
+        // 创建一个对象返回作为相应
         let response = {
             code: 501,
             msg: '失败'
         }
+        // 判断是否成功
         if (result.affectedRows === 1) {
             response.code = 200;
             response.msg = '成功'
@@ -32,5 +34,16 @@ function addHero(req, res) {
         res.send(response)
     })
 }
+// 修改英雄页面
+function edit(req, res) {
+    let id = req.query.id;
+    model.getHeroById(id,(arr)=>{
+        arr = arr[0]
+        console.log(arr);
+        
+        res.render('edit',{arr})
+    })
+}
+function revampHero(){}
 // 把controller暴露出去
 module.exports = controller;
