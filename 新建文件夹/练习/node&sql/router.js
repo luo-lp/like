@@ -12,5 +12,9 @@ router.get('/index',(req,res)=>{
 router.get('/add.html',(req,res)=>{
     controller.getAdd(req,res)
 })
+// 处理添加英雄请求
+router.post('/addHero',(req,res)=>{
+    controller.addHero(req,res)
+})
 // 让router暴露出来
 module.exports= router;
