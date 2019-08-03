@@ -46,9 +46,6 @@ function edit(req, res) {
 }
 // 修改英雄
 function revampHero(req,res){
-    let id = req.body.id;
-    // console.log(req.body);
-    // console.log(id);
     model.getDataSetHero(req.body,(result)=>{
         let response = {
             code: 501,
