@@ -12,7 +12,8 @@ app.listen(3000, () => {
 })
 // 设置使用ejs模板
 app.set('view engine', 'ejs');
-app.use('./assets',express.static('assets'))
+// 处理静态资源
+app.use('/assets',express.static('assets'))
 // 设置body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 // 使用router层

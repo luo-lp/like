@@ -6,7 +6,9 @@ const model = require('./model')
 function getIndex(req, res) {
     // 获取所有英雄数据
     model.getHeros(result=>{
-        console.log(result);
+        let arr = result
+        // 渲染页面
+        res.render('index',{arr})
     })
 }
 // 把controller暴露出去
