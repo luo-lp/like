@@ -1,5 +1,5 @@
 // 创建controller层
-const controller = { getIndex, getAdd, addHero, edit, revampHero }
+const controller = { getIndex, getAdd, addHero, edit, revampHero, removeHero }
 // 引入model层
 const model = require('./model')
 // 首页
@@ -38,23 +38,39 @@ function addHero(req, res) {
 function edit(req, res) {
     let id = req.query.id;
     // 根据id获取数据
-    model.getHeroById(id,(arr)=>{
+    model.getHeroById(id, (arr) => {
         arr = arr[0]
         // 渲染页面
-        res.render('edit',{arr})
+        res.render('edit', { arr })
     })
 }
 // 修改英雄
-function revampHero(req,res){
-    model.getDataSetHero(req.body,(result)=>{
+function revampHero(req, res) {
+    model.getDataSetHero(req.body, (result) => {
         let response = {
             code: 501,
             msg: '失败'
         }
-        if(result.affectedRows===1){
-            response.code=200,
-            msg='成功'
+        if (result.affectedRows === 1) {
+            response.code = 200,
+                response.msg = '成功'
         }
+        res.send(response)
+    })
+}
+// 删除英雄
+function removeHero(req, res) {
+    let id = req.query.id
+    model.removeHero(id, (result) => {
+        let response = {
+            code: 501,
+            msg: '失败'
+        }
+        if (result.affectedRows === 1) {
+            response.code = 200,
+                response.msg = '成功'
+        }
+        res.send(response)
     })
 }
 // 把controller暴露出去
